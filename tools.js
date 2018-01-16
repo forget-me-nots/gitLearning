@@ -8,6 +8,10 @@
 	 * 5.五中基本数据类型 number string boolean undefined null
 	 * 6.三目运算
 	 * 7.mspaint //快速启动window的画板。
+	 * 8.[注意]在new Date()前面使用一元加符号，可以把日期字符串，转换为日期毫秒数
+	 * 		console.log(+new Date());//1468239954076
+	 * 	9.如果进行算术加法运算，undefined转换为NaN，null转换为0，false转换为0，true转换为1
+	 * 10.[注意]null == 0的结果为false，这是因为javascript将null == undefined的结果设为true。
 	 * */
 	
 	
@@ -257,3 +261,4 @@
 		console.log([] == ![])
 		console.log([] == [])      //false   [] : 是对象只是形式上一样，还要比较路径地址
 	*/
+	
