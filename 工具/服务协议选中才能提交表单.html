@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<form action="" method="post">
+			<input type="checkbox" name="" id="servce" value=""/>
+			<label for="servce">我已阅读并接受服务条款</label>
+			<button type="submit" disabled="true">提交表单</button>
+		</form>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$("input[type=checkbox]").click(function () {
+			if ($(this).is(":checked")) {
+				$("button[type=submit]").attr("disabled",false).css("background-color","#F60")
+			} else{
+				$("button[type=submit]").attr("disabled",true).css("background-color","#eee")
+			}
+		})
+	</script>
+</html>

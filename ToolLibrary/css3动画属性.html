@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css3动画属性</title>
+		<style type="text/css">
+			/*transition 触发的写法*/
+			.box{
+				width: 100px;
+				margin: 50px auto;
+				height: 100px;
+				background-color: #008000;
+				transition: all 1s ease-in; 
+
+			}
+			.box:hover{
+				width: 300px;
+				height: 300px;
+			}
+			/*animation 触发的写法*/
+			.test{
+				width: 100px;
+				height: 100px;
+				background-color: chartreuse;
+				animation: 2s myname linear infinite normal;
+				
+			}
+			/*@keyframes myname{
+				from{width: 100px;}
+				to{width: 300px;}
+			}*/
+			@-webkit-keyframes myname{
+				0{width: 100px;}
+				50%{width: 300px;}
+				100%{width: 100px;}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="test"></div>
+		<!--
+		1.perspective 属性定义 3D 元素距视图的距离，以像素计。
+			该属性允许您改变 3D 元素查看 3D 元素的视图。
+			当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
+			注释：perspective 属性只影响 3D 转换元素。
+		
+		2.transition：过渡transition动画是一个复合属性，
+			包括transition-property、transition-duration、transition-timing-function、transition-delay这四个子属性。
+			通过这四个子属性的配合来完成一个完整的过渡效果。
+			(1)transition-property: 过渡属性(默认值为all)
+			(2)transition-duration: 过渡持续时间(默认值为0s)
+			(3)transiton-timing-function: 过渡函数(默认值为ease函数) linear，ease，ease-in，ease-out，ease-in-out，cubic-bezier(n,n,n,n)，steps
+			(4)transition-delay: 过渡延迟时间(默认值为0s)
+			[注意]transition的这四个子属性之间不能用逗号隔开，只能用空格隔开。
+			因为逗号隔开的代表不同的属性(transition属性支持多值，多值部分稍后介绍)；
+			而空格隔开的代表不同属性的四个关于过渡的子属性
+			transition-property指定需要过渡的CSS属性。并不是所有属性都能过渡的，只有能数字量化的CSS属性才能过渡。哪些属于能数字量化的CSS属性呢？例如：
+			颜色系，如color，background-color，border-color，outline-color等
+			数字系，实在太多了，如width，height，top，right，bottom，left，zoom，
+			opacity，line-height，background-position，word-spacing，font-weight，
+			vertical-align，outline-outset，z-index等。
+			01系，如visibility（0表示隐藏，1表示显示）
+			transition触发过渡的方式
+				常见的就是伪类触发:hover，:focus，:active，:checked等。
+				还有例如@media媒体查询，根据设备大小，横屏竖屏切换时触发。
+				还有如click，keydown等JS事件触发。
+				总之过渡的本质是在时间段内平滑过渡属性值，与怎么触发没有关系。
+			
+		3.animation 
+			animation css3动画注意与animate(jquery)是不同的
+			animation{ 
+				animation-name       用来调用@keyframes定义好的动画，与@keyframes定义的动画名称一致
+				animation-duration  指定元素播放动画所持续的时间
+				animatino-timing-function    和transition中的transition-timing-function 中的值一样
+				animation-delay  定义在浏览器开始执行动画之前等待的时间
+				animation-iteration-count   定义动画的播放次数，其通常为整数，默认是1,；取值为infinite，动画将无限次的播放。
+				animation-direction 主要用来设置动画播放方向,其主要有两个值normal;alternate
+									normal 默认值，如果设置为normal时，动画每次循环都是向前（即按顺序）播放
+				alternate（轮流），动画播放在第偶数次向前播放，第奇数次向反方向播放（animation-iteration-count取值大于1时设置有效）
+				animtion-play-state  属性是用来控制元素动画的播放状态,其主要有两个值：running;paused
+				animation-fill-mode  属性可以控制动画结束后元素的样式主要具有四个属性值：
+										none（默认，回到动画没开始时的状态。）
+										forwards（动画结束后动画停留在结束状态）
+										backwords（动画回到第一帧的状态）
+										both（根据animation-direction轮流应用forwards和backwards规则）。
+				
+				}
+		
+		
+		-->
+	</body>
+</html>

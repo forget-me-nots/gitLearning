@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			html{
+				height: 800px;
+			}
+			.warpper{
+				width: 800px;
+				height: 400px;
+				position: relative;
+				background-color: #228B22;
+				left: 200px;
+				top: 200px;
+				overflow: hidden;
+			}
+			.box{
+				width:4000px;
+				height:400px;
+				position: absolute;
+				left:0;
+				top:0;
+				list-style: none;
+			}
+			.box li{
+				width:800px;
+				height:400px;
+				float: left;
+				background-color: green;
+			}
+			.box li img{
+				width: 800px;
+				height: 400px;
+			}
+			#btnleft{
+				width: 20px;
+				height: 30px;
+				position: absolute;
+				z-index: 100;
+				left: 0;
+				top:200px;
+				background-color: red;
+				cursor: pointer;
+			}
+			#btnright{
+				width: 20px;
+				height: 30px;
+				position: absolute;
+				z-index: 100;
+				right: 0;
+				top:200px;
+				background-color: red;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="warpper">
+			<ul class="box">
+				<li>
+					<img src="img/6.jpg"/>
+				</li>
+				<li>
+					<img src="img/1.jpg"/>
+				</li>
+				<li>
+					<img src="img/2.jpg"/>
+				</li>
+				<li>
+					<img src="img/3.jpg"/>
+				</li>
+				<li>
+					<img src="img/6.jpg"/>
+				</li>
+				<li>
+					<img src="img/1.jpg"/>
+				</li>
+			</ul>
+			<span id="btnleft">&lt;</span>
+			<span id="btnright">&gt;</span>
+		</div>
+	</body>
+	<script type="text/javascript">
+	    var prev = $("#btnleft");
+	    var next = $("#btnright");
+		function aa (offset){
+			var newLeft=parseInt($(".box").css("left")) + offset;
+			if (newLeft<-3200) {
+				$(".box").css("left","-800")
+				//$(".box").animate({left:'0'},1000)
+			}else if (newLeft>0) {
+				$(".box").css("left","-3200px")
+				//$(".box").animate({left:'-2400px'},1000)
+			}else{
+				//$(".box").css("left",newLeft)
+				$(".box").animate({left:newLeft+"px"},1000)
+			}
+		}
+		prev.click(function(){
+			aa(800)
+			console.log($(".box").css("left"))
+		})
+		next.click(function(){
+			aa(-800)
+			console.log($(".box").css("left"))
+		})
+//		prev.click(function(){
+//			aa(800)
+//			console.log($(".box").css("left"))
+//		})
+//		$("#btnright").click(function(){
+//			aa(-800)
+//			console.log($(".box").css("left"))
+//		})
+		var timer
+		function play () {
+			timer = setInterval(function () {
+		        next.click()
+		    }, 3000)
+		}
+		play()
+//		var warpper = $(".warpper");
+//		warpper.mousemove(function(){
+//			clearInterval(timer);
+//		})
+	</script>
+</html>

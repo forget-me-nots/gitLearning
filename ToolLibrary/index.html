@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="shortcut icon" href="img/favicon.ico" />
+		<style type="text/css">
+			#box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				margin: 10px auto;
+				color: white;
+				cursor: pointer;
+				text-indent: ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">关注</div>
+	</body>
+	<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tools.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script type="text/javascript">
+		$(function () {
+			var flag = true;
+			$("#box").click(function () {
+				//alert(11)
+				if (!flag) {
+					$(this).css("background-color","red")
+					flag = true
+				} else{
+					$(this).css("background-color","green")
+					flag = false
+				}
+			})
+		})
+	</script>-->
+	<script type="text/javascript">
+	/*
+		var div = document.getElementById("box")
+		console.log(div);
+		var flag = true;
+		div.onclick = function () {
+			if (!flag) {
+				div.style.backgroundColor = "red";
+				div.innerHTML="关注";
+				flag = true
+			} else{
+				div.style.backgroundColor = "green";
+				div.innerHTML="已关注";
+				flag = false
+			}
+		}
+		*/
+		//绑定多个事件
+		/*
+		$(function () {
+			function aa () {
+				console.log("aa")
+			}
+			function bb () {
+				console.log("bb")
+			}
+			$("#box").on("click",aa).on("click",bb).off("click",aa)
+		})
+		*/
+	</script>
+	<script type="text/javascript">
+	/*
+		var st = (window.foo || (window.foo = "bar"))
+		console.log(st)
+		*/
+		//封装一个函数获得鼠标点击的是哪一个键
+		/*
+			function onmouse(event){
+				var event = event ? event : window.event;
+				//console.log(event);
+				switch(event.button){
+					case 0 :
+						alert('你点击了鼠标左键');
+						break;
+					case 2 :
+						alert('你点击了鼠标右键');
+						break;
+					case 4 :
+						alert('你点击了鼠标中键');
+						break;
+					default :
+						break;
+				}
+			}
+//		
+		$(document).bind("keydown mousedown", function(event){
+		    var msg = '';
+		    if( event.type == "mousedown" ){ // 鼠标按下事件
+		        var map = {"1": "左", "2":"中", "3":"右"};
+		        msg = '你按下了鼠标[' + map[event.which] + ']键';
+		    }else{ // 键盘按下事件
+		        if(event.which >= 65 && event.which <= 90){
+		            msg = '你按下了键盘[' + String.fromCharCode(event.which) + ']键';
+		        }
+		    }
+		    if(msg){
+		        $("#msg").prepend( msg + '<br>');
+		    }
+		});*/
+	</script>
+</html>
