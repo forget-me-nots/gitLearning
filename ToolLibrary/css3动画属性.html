@@ -22,7 +22,9 @@
 				width: 100px;
 				height: 100px;
 				background-color: chartreuse;
-				animation: 2s myname linear infinite normal;
+				position: absolute;
+				left: 0;
+				animation: 5s myname linear infinite normal;
 				
 			}
 			/*@keyframes myname{
@@ -30,9 +32,18 @@
 				to{width: 300px;}
 			}*/
 			@-webkit-keyframes myname{
-				0{width: 100px;}
-				50%{width: 300px;}
-				100%{width: 100px;}
+				0{	
+					width: 100px;
+					left: 0px;
+				}
+				50%{
+					width: 300px;
+					left: 50%;
+				}
+				100%{
+					width: 100px;
+					left: 0px;
+					}
 			}
 		</style>
 	</head>
@@ -50,13 +61,14 @@
 			通过这四个子属性的配合来完成一个完整的过渡效果。
 			(1)transition-property: 过渡属性(默认值为all)
 			(2)transition-duration: 过渡持续时间(默认值为0s)
-			(3)transiton-timing-function: 过渡函数(默认值为ease函数) linear，ease，ease-in，ease-out，ease-in-out，cubic-bezier(n,n,n,n)，steps
+			(3)transiton-timing-function: 过渡函数(默认值为ease函数) 
+				linear，ease，ease-in，ease-out，ease-in-out，cubic-bezier(n,n,n,n)，steps
 			(4)transition-delay: 过渡延迟时间(默认值为0s)
 			[注意]transition的这四个子属性之间不能用逗号隔开，只能用空格隔开。
 			因为逗号隔开的代表不同的属性(transition属性支持多值，多值部分稍后介绍)；
 			而空格隔开的代表不同属性的四个关于过渡的子属性
-			transition-property指定需要过渡的CSS属性。并不是所有属性都能过渡的，只有能数字量化的CSS属性才能过渡。哪些属于能数字量化的CSS属性呢？例如：
-			颜色系，如color，background-color，border-color，outline-color等
+			transition-property指定需要过渡的CSS属性。并不是所有属性都能过渡的，只有能数字量化的CSS属性才能过渡。哪些属于能数字量化的CSS属性呢？
+			例如：颜色系，如color，background-color，border-color，outline-color等
 			数字系，实在太多了，如width，height，top，right，bottom，left，zoom，
 			opacity，line-height，background-position，word-spacing，font-weight，
 			vertical-align，outline-outset，z-index等。
@@ -87,7 +99,66 @@
 				
 				}
 		
-		
+		4	transform  transform本质上是一系列变形函数，
+			分别是translate位移，scale缩放，rotate旋转，skew扭曲，matrix矩阵
+			
+			前置属性
+				transform-origin:(1)用于指定元素变形的中心点。默认中心点就是元素的正中心，即XYZ轴的50% 50% 0处。
+								可以通过该属性改变元素在XYZ轴的中心点，正值表示正向位移，负值表示负向位移。
+								（XYZ轴的正向分别是往右，往下，靠近用户眼睛。反之为反向）
+								(2)表示2维的x-offset/y-offset可以设px值也可以设%百分比，
+								也可设top / right / bottom / left / center等keyword。
+								表示3维的z-offset只能设px值，不能设%百分比，也没有keyword。
+								
+				transform-style 这个属性比较简单只有两个值flat和preserve-3d
+								默认值flat表示2D舞台，所有子元素2D层面展现。
+								preserve-3d看名字就知道了表示3D舞台，所有子元素在3D层面展现。
+								注意，在变形元素自身上指定该属性是没有用的，它用于指定舞台，
+								所以要在变形元素的父元素上设置该属性。设定后，所有子元素共享该舞台。
+						注意
+						另外如果同时设了transform-style: preserve-3d;和overflow: hidden;，
+						3D效果将失效，等价于transform-style: flat;。如果你发现3D效果没有像预想地那样出现，
+						可以检查一下（包括祖先元素）是否有overflow: hidden;
+						
+				perspective perspective视距就是该线从屏幕到用户眼睛的距离。
+							perspective只能设px值，不能设%百分比。
+							值越小表示用户眼睛距离屏幕越近，相当于创建一个较大的3D舞台。
+							反之，值越大表示用户眼睛距离屏幕越远，相当于创建一个较小的3D舞台
+							
+				perspective-origin  设置视距的基点
+							基点默认值是50% 50%即center，表示视距基点在中心点不进行任何位移。
+							你可以让基点在XY轴上进行位移，产生上图那样的效果。
+							注意该属性同样应该定义在父元素上，适用于整个3D舞台。
+							它需要和perspective属性结合着一起用
+							
+				backface-visibility  用于是否可以看见3D舞台背面，默认值visible表示背面可见，可以设成hidden让背面不可见。
+									通常当旋转时，如果不希望背面显示出来，该属性就很有用，设成hidden即可
+								
+			2D变形：
+				translate  translate，translateX，translateY
+							translate位移，类似于position:relative属性。
+							可设单值，也可设双值。正数表示XY轴正向位移，负数为反向位移
+							transform: translate(100px)等价于transform: translate(100px,0)
+							
+				scale      scale，scaleX，scaleY
+							scale缩放，同样可以设单值和双值。单值时表示X轴和Y轴等值缩放。默认值为1
+							transform: scale(.5);  scaleX(.5)
+							
+				rotate     rotate旋转，比较简单，只能设单值。正数表示顺时针旋转，负数表示逆时针旋转。
+						        如transform: rotate(30deg);
+						        
+				skew		skew，skewX，skewY
+							skew扭曲可以设单值和双值。单值时表示只X轴扭曲，Y轴不变，
+							如transform: skew(30deg);等价于transform: skew(30deg, 0);
+				matrix   可以不看
+			
+			3D变形：    3D变形有translate3d位移，scale3d缩放，rotate3d旋转， matrix3d矩阵。
+					（注意skew扭曲是没有3D的）。3D的用法和2D差不多，只不过多了个Z轴的值而已
+				translate3d
+				scale3d
+				rotate3d
+				matrix3d
+				层级影响
 		-->
 	</body>
 </html>
