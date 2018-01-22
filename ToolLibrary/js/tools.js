@@ -261,4 +261,39 @@
 		console.log([] == ![])
 		console.log([] == [])      //false   [] : 是对象只是形式上一样，还要比较路径地址
 	*/
-	
+	//十.对象的深度克隆封装函数
+	/*
+		function deepClone (origin,target) {
+			var target = target ||{},
+				toStr  = Object.prototype.toString,
+				arrStr = "[object Array]";
+			for (var prop in origin) {
+				if (origin.hasOwnProperty(prop)) {
+					if (origin[prop] !=="null" && typeof(origin[prop])=="object") {
+						target[prop] = toStr.call(origin[prop]) == arrStr ? [] : {};
+						deepClone(origin[prop],target[prop])
+					} else{
+						target[prop] = origin[prop]
+					}
+				}
+			}
+			return target
+		}
+	*/
+	/*
+		例子
+		var obj = {
+			name : "zhang",
+			age  : 40,
+			hoby : ["羽毛球","篮球","乒乓球"],
+			a    : {
+				b : "小王",
+				c : "小黄"
+			}
+		}
+		var obj1 = {
+			height : "175cm"
+		}
+		deepClone(obj,obj1)
+		console.log(obj1)
+	*/

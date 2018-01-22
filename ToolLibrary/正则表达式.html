@@ -1,0 +1,29 @@
+<!DCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//使用正则表达式匹配
+			var str = "1000000000007" ; //==>10,000,000,000
+			var reg = /(?=(\B)(\d{3})+$)/g;
+			console.log(str.replace(reg,","))
+			/*
+			尝试将URL中的参数转换为json对象;
+			如 :"http://flup.leley.com?a=1&b=2&c=3";
+			转化为: {
+				a : 1,
+				b : 2,
+				c : 3
+			}
+			*/
+			var str = "http://flup.leley.com?a=1&b=2&c=3"
+			var obj = {
+				
+			}
+			
+		</script>
+	</body>
+</html>

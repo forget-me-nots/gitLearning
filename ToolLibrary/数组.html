@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		//数组的方法
+			//改变原数组
+				/**
+				 * push：向数组的末尾增加一项 返回值是数组的新长度
+				 * pop:删除数组的末尾项 返回值是删除的数组项
+				 * shift:删除数组开头项 返回被删除的开头项目
+				 * unshift：向数组开头增加一项 返回值是数组的新长度
+				 * sort:根据匿名函数进行冒泡排序 b-a倒序 a-b升序      排序
+				 * reverse:倒序数组 返回值倒序数组 原有数组改变        排序
+				 * splice：删除数组中的任意项 返回值是被删除的数组项
+				 * 
+				 * */
+				
+			//不改变原数组
+				/**
+				 * concat:把一个数组和另一个数组拼接在一起 返回拼接好的数组 
+				 * join:把数组中的每一项 按照指定的分隔符拼接成字符串
+				 * slice:复制数组 返回值是复制到的新数组 写上数值之后 不包含被复制的最后一项
+				 * split:
+				 * toString: 把数组转换为字符串，并返回结果。
+				 * */
+				
+			// 1.利用sort排序
+			/*
+			
+				var arr = [3,6,2,4,1,5]
+				var arr1 = arr
+				//console.log(arr.reverse())
+				arr.sort(function(a,b){
+					//return a-b
+					return b-a
+				})
+				//console.log(arr)
+			*/
+			// 2.给一个有序数组乱序
+				var arr = [1,2,3,4,5,6]
+				arr.sort(function(){
+					return Math.random()-0.5
+					//Math.random() 产生0-1的开区间随机数 。 （-0.5）后就会随机产生正负
+				})
+		</script>
+	</body>
+</html>
