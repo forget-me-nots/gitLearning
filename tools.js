@@ -214,7 +214,8 @@
 						obj.removeAttr("disabled");
 						num = 10;
 						window.location = "http://www.baidu.com"
-						//location.reload(true) 刷新当前页面，参数为true时， 则以 GET 方式，从服务端取最新的页面, 相当于客户端点击 F5("刷新")。当为false从客户端缓存里取当前页
+						//location.reload(true) 刷新当前页面，参数为true时， 
+						//则以 GET 方式，从服务端取最新的页面, 相当于客户端点击 F5("刷新")。当为false从客户端缓存里取当前页
 						clearInterval(timer)
 						//return
 					} else{

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+				尝试将URL中的参数转换为json对象;
+				如 :"http://flup.leley.com?a=1&b=2&c=3";
+				转化为: {
+					a : 1,
+					b : 2,
+					c : 3
+				}
+			*/
+			var str = "http://flup.lelfdsfdsfey.com?a=1&b=2&c=3&name=zhang&age=40"
+			var object={
+				sex : "男"
+			}
+			function strobj (str,object) {
+				var object = object || {},        //先申明一个空对象放数组
+					num = str.indexOf("?"),  //获取？后的索引值
+					str1 = str.slice(num+1),  //截取？后的参数返回
+					str2 = str1.split("&")   //把str1拆分成 ["a=1", "b=2", "c=3", "name=zhang", "age=40"]
+					console.log(str2)
+				for (var i = 0; i < str2.length; i++) {
+					//循环取出每一个在拆分，然后把它们放到对象中
+					object[str2[i].split("=")[0]] = str2[i].split("=")[1]
+				}
+				return object
+			}
+				console.log(strobj(str,object))
+				
+			function GetQueryString(name) {  
+			    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");  
+			    var r = window.location.search.substr(1).match(reg);  
+			    if (r != null) {   
+			        return unescape(r[2]);  
+			    }  
+			    return null;  
+			}     
+		</script>
+	</body>
+</html>

@@ -246,8 +246,8 @@
 		getElementsByName() //通过元素的Name属性的值 
 		getElementById() //通过元素Id，唯一性
 		getElementsByClassName()//通过元素的class类
-	 
 	 */
+	
 	//九.看下列代码输出什么？解释原因
 	/*
 		var undefined;
@@ -261,6 +261,7 @@
 		console.log([] == ![])
 		console.log([] == [])      //false   [] : 是对象只是形式上一样，还要比较路径地址
 	*/
+	
 	//十.对象的深度克隆封装函数
 	/*
 		function deepClone (origin,target) {
