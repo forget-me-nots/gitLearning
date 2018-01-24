@@ -79,9 +79,68 @@
 		var son = new Son();
 		var father = new Father();
 	
-	*/
 	
-	
+		//继承的实例    ------>源码时代(自己写的，参考下面标准写法)
+		function Father(name,age){
+			this.name = name;
+			this.age = age
+		};
+		Father.prototype.driveCar = function () {
+			console.log(this.name+"开车去兜兜风")
+		}
+		function Son(name,age,hobby){
+			//this.name = name
+			//Father.call(this,name)
+			Father.apply(this,arguments)
+			this.hobby = hobby
+		}
+		//Son.prototype = new Father()
+		//Son.prototype = Object.create(new Father())
+		//Son.prototype = Object.create(Father.prototype)
+		//继承的核心代码
+		Son.prototype = Object.create(Father.prototype,{
+			constructor : {value : Son}
+		})
+		//Son.prototype.constructor = Son
+		Son.prototype.playGame = function () {
+			console.log(this.name+"lol")
+		}
+		
+		var f = new Father("大强");
+		var s = new Son("小强",18,["睡觉","打豆豆"])
+		s.driveCar("小强")
+		console.log(s.constructor)
+		
+	//标准继承整理	------>源码时代
+		//1. 创建一个父类
+	   	function Father(name,age){
+	   		this.name = name;
+	   		this.age = age;
+	   	}
+	   	//2. 父类原型扩展
+	   	Father.prototype.driveCar = function(){
+	   		console.log(this.name+",开车出去兜兜风!!");
+	   	}
+	   	//3. 创建子类
+	   	function Son(name,age,hobby){
+	   		// 调用父类构造器
+	   		Father.apply(this, arguments); // 约定: 子类构造器,参数的"顺序"必须和父类构造器声明的参数保持一致!!
+	   		// 定义子类构造器逻辑
+	   		this.hobby = hobby;
+	   	}
+	   	//4. 为子类定义原型
+	   		// 继承的核心代码
+			Son.prototype = Object.create(Father.prototype,{
+				constructor : {value:Son}
+			});
+		   	// 扩展子类的原型
+		   	Son.prototype.playGames = function(){
+		   		console.log(this.name+"玩LOL");
+		   	}
+	   // 创建子类实例
+	   var s = new Son("小强",18,['睡觉','吃饭','打豆豆']);
+	*/	
+		
 	//二.滚动条滚动的距离兼容写法
 	/*
 		function getScrollOffset () {
